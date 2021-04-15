@@ -3,7 +3,20 @@ language: java
 jdk:
   - openjdk14
 
+services:
+  - postgresql
+
+before_install:
+  - psql -c 'create database forum;' -U postgres
+
 sudo: false
+
+env:
+  global:
+    - CODECOV_TOKEN="cbb46a84-64c2-4b80-97c7-418005fdda54"
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
 notifications:
   email:

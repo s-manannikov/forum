@@ -1,6 +1,7 @@
 ## forum
 
 [![Build Status](https://travis-ci.org/s-manannikov/forum.svg?branch=master)](https://travis-ci.org/s-manannikov/forum)
+[![codecov](https://codecov.io/gh/s-manannikov/forum/branch/master/graph/badge.svg?token=t3vDp6Q0ts)](https://codecov.io/gh/s-manannikov/forum)
 
 The Forum using Spring.
 
