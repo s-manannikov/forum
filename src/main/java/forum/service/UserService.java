@@ -1,16 +1,26 @@
 package forum.service;
 
 import forum.model.User;
+import forum.repository.UserRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class UserService {
-    private final List<User> users = new ArrayList<>();
+    private final UserRepository users;
 
-    public UserService() {
-        users.add(User.of("User1"));
+    public UserService(UserRepository users) {
+        this.users = users;
+    }
+
+    public void saveUser(User user) {
+        users.save(user);
+    }
+
+    public User findUserById(long id) {
+        return users.findById(id).orElse(null);
+    }
+
+    public User findUserByUsername(String username) {
+        return users.findByUsername(username);
     }
 }

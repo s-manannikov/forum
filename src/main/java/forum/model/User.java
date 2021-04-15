@@ -1,33 +1,41 @@
 package forum.model;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "users")
 public class User {
-    private int id;
-    private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    private String username;
+
     private String email;
+
     private String password;
 
-    public static User of(String name) {
-        User user = new User();
-        user.name = name;
-        return user;
-    }
+    @ManyToOne
+    @JoinColumn(name = "authority_id")
+    private Authority authority;
 
-    public int getId() {
+    private boolean enabled;
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
@@ -46,19 +54,37 @@ public class User {
         this.password = password;
     }
 
+    public Authority getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(Authority authority) {
+        this.authority = authority;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return id == user.id
-                && Objects.equals(name, user.name)
+                && enabled == user.enabled
+                && Objects.equals(username, user.username)
                 && Objects.equals(email, user.email)
-                && Objects.equals(password, user.password);
+                && Objects.equals(password, user.password)
+                && Objects.equals(authority, user.authority);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, email, password);
+        return Objects.hash(id, username, email, password, authority, enabled);
     }
 }

@@ -1,103 +1,14 @@
+html {
+    font-size: 10px;
+}
+
 body {
-    background: #e7edee;
-    width: 100%;
-    font-family: "lato", sans-serif;
-    font-size: 12px;
-}
-
-a {
-    text-decoration: none;
-}
-
-.container {
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-h2 {
-    font-size: 26px;
-    margin: 20px 0;
-    text-align: center;
-}
-
-.responsive-table li {
-    border-radius: 6px;
-    padding: 13px 15px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-}
-
-.responsive-table .table-header {
-    background-color: #95A5A6;
-    font-size: 11px;
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-}
-
-.responsive-table .table-row {
-    background-color: #ffffff;
-    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.1);
-}
-
-.responsive-table .col-1 {
-    flex-basis: 54%;
-}
-
-.responsive-table .col-2 {
-    flex-basis: 19%;
-}
-
-.responsive-table .col-3 {
-    flex-basis: 11%;
-}
-
-.responsive-table .col-4 {
-    flex-basis: 16%;
-}
-
-.rc_nav {
-    overflow: hidden;
-    background-color: #95A5A6;
-    text-align: center;
-    z-index: 6;
-}
-
-.rc_nav a {
-    display: inline-block;
-    margin-right: -4px;
-    color: #ffffff;
-    padding: 22px 22px;
-    text-decoration: none;
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px;
-    -webkit-transition: background 0.3s linear;
-    -moz-transition: background 0.3s linear;
-    -ms-transition: background 0.3s linear;
-    -o-transition: background 0.3s linear;
-    transition: background 0.3s linear;
-    z-index: 9;
-}
-
-.rc_nav a:hover {
-    background-color: #8994b1;
-}
-
-.rc_content {
-    text-align: center;
-    padding-left:14px;
-    font-family: Poppins;
-    margin-top: 100px;
-    color: #8e909b;
+    font-family: "Helvetica Neue", Helvetica, Arial;
 }
 
 .signup {
-    width: 406px;
-    max-width: 406px;
+    width: 750px;
+    max-width: 750px;
     margin: 0 auto;
 }
 
@@ -121,7 +32,6 @@ h2 {
 
 #signup .header h3 {
     color: #333333;
-    font-family: "Helvetica Neue", Helvetica, Arial;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -136,7 +46,7 @@ h2 {
 #signup .sep {
     height: 1px;
     background: #e8e8e8;
-    width: 406px;
+    width: 750px;
     margin: 0 -25px;
 }
 
@@ -161,28 +71,35 @@ input:-moz-placeholder {
     color:    #b5b5b5;
 }
 
-#signup .inputs input[type=username], input[type=email], input[type=password] {
+#signup .inputs input[type=name] {
     background: #f5f5f5;
-    font-size: 0.8rem;
+    font-size: 12px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
     border: none;
     padding: 13px 10px;
-    width: 330px;
+    width: 700px;
     margin-bottom: 20px;
     box-shadow: inset 0 2px 3px rgba( 0,0,0,0.1 );
     clear: both;
 }
 
-#signup .inputs input[type=username]:focus, input[type=email]:focus, input[type=password]:focus {
-    background: #fff;
-    box-shadow: 0 0 0 3px #fff38e, inset 0 2px 3px rgba( 0,0,0,0.2 ), 0 5px 5px rgba( 0,0,0,0.15 );
-    outline: none;
+#signup .inputs textarea[type=description] {
+    background: #f5f5f5;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    padding: 13px 10px;
+    width: 700px;
+    margin-bottom: 20px;
+    box-shadow: inset 0px 2px 3px rgba( 0,0,0,0.1 );
+    clear: both;
 }
 
 #signup .inputs #submit {
-    width: 330px;
+    width: 100%;
     margin-top: 20px;
     padding: 15px 0;
     color: #fff;
@@ -229,4 +146,91 @@ input:-moz-placeholder {
             linear, left top, left bottom,
             from(#a4b0cb),
             to(#b9c5dd));
+}
+
+.comments-area {
+    max-width: 100%;
+}
+
+.comments-area .comments-title {
+    text-align: center;
+    padding-top: 2rem;
+    font-size: 2rem;
+    color: rgb(40, 24, 24);
+}
+
+.comments-area .comment-list {
+    max-width: 100%;
+    min-height: 15rem;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.comments-area .comment-list .comment {
+    width: 80%;
+    margin: 2rem auto 2rem;
+}
+
+.comments-area .comment-list .comment .comment-body {
+    border-radius: 1rem;
+    background: rgba(255, 162, 153, 0.3);
+    padding: 2rem;
+}
+
+.comments-area .comment-list .comment .comment-body .comment-meta .comment-author {
+    display: flex;
+}
+
+.comments-area .comment-list .comment .comment-body .comment-meta .comment-author b {
+    padding: 0 1rem;
+}
+
+.comments-area .comment-list .comment .comment-body .comment-meta .comment-author b a {
+    text-decoration: none;
+    color: #717171;
+    font-size: 2rem;
+}
+
+.comments-area .comment-list .comment .comment-body .comment-meta .says {
+    display: none;
+}
+
+.comments-area .comment-list .comment .comment-body .comment-meta .comment-metadata {
+    margin-left: 3.7rem;
+}
+
+.comments-area .comment-list .comment .comment-body .comment-meta .comment-metadata a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.comments-area .comment-list .comment .comment-body .comment-meta {
+    margin-left: 3.7rem;
+    margin-top: 1rem;
+}
+
+.comments-area .comment-list .comment .comment-body .comment-content p {
+    margin-left: 3.7rem;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.comments-area .comment-list .comment .comment-body .comment-content a {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.comments-area .comment-list .comment .comment-body .reply {
+    margin-left: 3.7rem;
+}
+
+.comments-area .comment-list .comment .comment-body .reply a {
+    font-size: 1.3rem;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.comments-area .comment-list .children {
+    list-style-type: none;
 }

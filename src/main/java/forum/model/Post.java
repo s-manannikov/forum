@@ -1,31 +1,36 @@
 package forum.model;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import javax.persistence.*;
+import java.util.*;
 
+@Entity
+@Table(name = "posts")
 public class Post {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     private String name;
-    private String desc;
-    private LocalDateTime created;
-    private List<Reply> replies = new ArrayList<>();
 
-    public static Post of(int id, String name, String desc) {
-        Post post = new Post();
-        post.id = id;
-        post.name = name;
-        post.desc = desc;
-        post.created = LocalDateTime.now();
-        return post;
-    }
+    private String description;
 
-    public int getId() {
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created = new Date(System.currentTimeMillis());
+
+    @OneToMany
+    @OrderBy("created asc")
+    @JoinColumn(name = "post_id")
+    private final List<Reply> replies = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -37,28 +42,36 @@ public class Post {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public LocalDateTime getCreated() {
+    public Date getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDateTime created) {
+    public void setCreated(Date created) {
         this.created = created;
-    }
-
-    public void addReply(Reply reply) {
-        this.replies.add(reply);
     }
 
     public List<Reply> getReplies() {
         return replies;
+    }
+
+    public void addReply(Reply reply) {
+        replies.add(reply);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -66,14 +79,16 @@ public class Post {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Post post = (Post) o;
-        return id == post.id &&
-                Objects.equals(name, post.name) &&
-                Objects.equals(desc, post.desc) &&
-                Objects.equals(created, post.created);
+        return id == post.id
+                && Objects.equals(name, post.name)
+                && Objects.equals(description, post.description)
+                && Objects.equals(created, post.created)
+                && Objects.equals(replies, post.replies)
+                && Objects.equals(user, post.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, desc, created);
+        return Objects.hash(id, name, description, created, replies, user);
     }
 }

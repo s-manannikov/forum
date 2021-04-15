@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <style><%@include file="/style/style.css"%></style>
-
 
 <!doctype html>
 <html lang="en">
@@ -14,32 +14,36 @@
 
 <div class="rc_nav" id="centered_nav">
     <a href="<c:url value='/'/>">Home</a>
-    <a href="<c:url value='/add'/>">Add Post</a>
-    <a href="<c:url value='/login'/>">Sign in</a>
-    <a href="<c:url value='/reg'/>">Sign Up</a>
+    <a href="<c:url value='/add'/>">Create Post</a>
+    <a href="<c:url value='/logout'/>">Sign out</a>
 </div>
 
-<div class="wrapper">
-    <table>
-        <thead>
-        <tr>
-            <th style="width: 560px">Post</th>
-            <th style="width: 120px">Author</th>
-            <th style="width: 100px">Messages</th>
-            <th style="width: 120px">Date</th>
-        </tr>
-        </thead>
-        <tbody>
+<div class="container">
+    <h2>Forum</h2>
+    <ul class="responsive-table">
+        <li class="table-header">
+            <div class="col col-1">Post</div>
+            <div class="col col-2">Author</div>
+            <div class="col col-3">Messages</div>
+            <div class="col col-4">Date</div>
+        </li>
         <c:forEach items="${posts}" var="post">
-            <tr>
-                <td><a href="<c:url value='/post?id=${post.id}'/>"><c:out value="${post.name}"/></a></td>
-                <td></td>
-                <td><c:out value="${post.replies.size()}"/></td>
-                <td><c:out value="${post.created}"/></td>
-            </tr>
+        <li class="table-row">
+            <div class="col col-1" data-label="Post">
+                <a href="<c:url value='/post?id=${post.id}'/>"><c:out value="${post.name}"/></a>
+            </div>
+            <div class="col col-2" data-label="Author">
+                <c:out value="${post.user.username}"/>
+            </div>
+            <div class="col col-3" data-label="Messages">
+                <c:out value="${post.replies.size()}"/>
+            </div>
+            <div class="col col-4" data-label="Date">
+                <c:set var="date" value="${post.created}"/><fmt:formatDate type="both" value="${date}"/>
+            </div>
+        </li>
         </c:forEach>
-        </tbody>
-    </table>
+    </ul>
 </div>
 
 </body>
