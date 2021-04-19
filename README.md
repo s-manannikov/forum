@@ -11,11 +11,11 @@ Technologies
 - Maven
 - Travis CI
 - Liquibase
-- Heroku ([forum demo](https://murmuring-dusk-19585.herokuapp.com))
+- Heroku ([demo](https://murmuring-dusk-19585.herokuapp.com))
 - JSP, CSS
 
 Functionality
-- Making posts and replies
+- Creating posts and replies
 - Authorization/Authentication
 
 Screenshots
